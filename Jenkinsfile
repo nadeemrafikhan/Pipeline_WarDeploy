@@ -2,6 +2,7 @@ pipeline {
 			agent any 
 	environment {
 			PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
+			def WAR_PATH= "webapp/target/*.war"
 	}
 				stages {
 					stage ('git checkout') {
@@ -17,7 +18,7 @@ pipeline {
 					stage ('deploy') {
 	steps {
 	sshagent(['tocat_ssh']) {
-	sh 'scp -o StrictHostkeyChecking=no webapp/target/*.war ec2-user@3.111.157.181:/opt/apache-tomcat-8.5.81/webapps/'
+		sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@3.111.157.181:/opt/apache-tomcat-8.5.81/webapps/'
 }
 }
 		post{
