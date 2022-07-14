@@ -13,7 +13,7 @@ pipeline {
 				PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 				def WAR_PATH= "webapp/target/*.war"
 			 //latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
-			 latestTag = 'ddddddddddddddddd'
+			 //latestTag = 'ddddddddddddddddd'
 		} 
 	stages {
 	
@@ -82,7 +82,7 @@ sh """
 	                success{
 	                    echo 'Now Archiving ....'
 			   // echo 'latestTag ___________________________________________'
-				echo latestTag
+				//echo latestTag
 			    archiveArtifacts artifacts : '**/*.war' 
 	                    sshagent(['root-ssh']) {
 	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.233.138.205:/home/ec2-user/artifact/'
