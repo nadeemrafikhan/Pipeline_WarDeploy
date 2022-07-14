@@ -68,7 +68,7 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
 sh """
 	scp -o StrictHostkeyChecking=no ${WAR_PATH} root@65.0.103.93:/opt/apache-tomcat-8.5.81/webapps/
 	ssh root@65.0.103.93 /opt/apache-tomcat-8.5.81/bin/shutdown.sh
-	ssh root@65.0.103.93 /opt/apache-tomcat-8.5.81/bin/statrup.sh
+	ssh root@65.0.103.93 /opt/apache-tomcat-8.5.81/bin/startup.sh
 """	
 }
 	} 
