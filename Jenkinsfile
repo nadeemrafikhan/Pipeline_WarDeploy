@@ -54,7 +54,7 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
 	                    echo 'Now Archiving ....'
 			    archiveArtifacts artifacts : '**\/*.war' 
 	                    sshagent(['tocat_ssh']) {
-	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/home/ec2-user/artifact/'
+	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@65.0.103.93:/home/ec2-user/artifact/'
 	                }
 			}
 	            }
@@ -65,15 +65,19 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
 	// Before war file path variable setup
  //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  root@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
 //after war file path variable setup
-sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
-	}
+sh """
+	scp -o StrictHostkeyChecking=no ${WAR_PATH} root@65.0.103.93:/opt/apache-tomcat-8.5.81/webapps/
+	ssh root@65.0.103.93 /opt/apache-tomcat-8.5.81/bin/shutdown.sh
+	ssh root@65.0.103.93 /opt/apache-tomcat-8.5.81/bin/statrup.sh
+"""	
+}
 	} 
 			post{
 	                success{
 	                    echo 'Now Archiving ....'
 			    archiveArtifacts artifacts : '**/*.war' 
 	                    sshagent(['root-ssh']) {
-	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@43.204.24.96:/home/ec2-user/artifact/'
+	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@65.0.103.93:/home/ec2-user/artifact/'
 	                }
 			}
 	            }
