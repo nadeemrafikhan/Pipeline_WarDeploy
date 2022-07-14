@@ -76,18 +76,18 @@ sh """
     ssh root@13.127.134.84/opt/apache-tomcat-8.5.81/bin/shutdown.sh
     ssh root@13.127.134.84 /opt/apache-tomcat-8.5.81/bin/startup.sh
 """ 
-} */
+} 
     } 
             post{
                     success{
                         echo 'Now Archiving ....'
-                archiveArtifacts artifacts : '**/*.war' 
+                archiveArtifacts artifacts : '**\/*.war' 
                         sshagent(['root-ssh']) {
                         sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.127.134.84:/home/ec2-user/artifact/'
                     }
             }
                 }
-
+*/
         
         }   
                 
