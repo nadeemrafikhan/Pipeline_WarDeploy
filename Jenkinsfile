@@ -26,7 +26,7 @@ pipeline {
                     echo 'Now Archiving ....'
 		    archiveArtifacts artifacts : '**/*.war' 
                      sshagent(['tocat_ssh']) {
-                    sh 'scp -o StrictHostkeyChecking=no webapp/target/*.war ec2-user@3.111.157.181:/home/ec2-user/artifact/'
+                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@3.111.157.181:/home/ec2-user/artifact/'
                 }
 		}
             }
