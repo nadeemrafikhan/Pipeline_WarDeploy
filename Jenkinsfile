@@ -58,7 +58,7 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
             post{
                     success{
                         echo 'Now Archiving ....'
-                archiveArtifacts artifacts : '**\/*.war' 
+                archiveArtifacts artifacts : '**/*.war' 
                         sshagent(['tocat_ssh']) {
                         sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@65.0.103.93:/home/ec2-user/artifact/'
                     }
