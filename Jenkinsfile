@@ -52,7 +52,7 @@ stage ('deploy') {
  //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  ec2-user@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
 
 //after war file path variable setup
-sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
+sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.127.134.84:/opt/apache-tomcat-8.5.81/webapps/'
     }
     } 
             post{
@@ -60,7 +60,7 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
                         echo 'Now Archiving ....'
                 archiveArtifacts artifacts : '**/*.war' 
                         sshagent(['tocat_ssh']) {
-                        sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@65.0.103.93:/home/ec2-user/artifact/'
+                        sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.127.134.84:/home/ec2-user/artifact/'
                     }
             }
                 }
