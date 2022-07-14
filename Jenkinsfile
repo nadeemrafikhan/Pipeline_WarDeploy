@@ -15,8 +15,10 @@ stage ('git checkout') {
 	           steps { 
 	 	git credentialsId: 'github', url:'https://github.com/nadeemrafikhan/hello-world.git'
 		}
-	
-// In this build stage , cleaning the workspace before package the .war file on local Jenkins server.				   		}
+
+	}
+// In this build stage , cleaning the workspace before package the .war file on local Jenkins server.				   		
+
 	stage ('Build') {
 	           steps {	
 // before environment variable setup
