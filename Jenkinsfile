@@ -1,6 +1,7 @@
 pipeline {
 	agent any 
 	options {
+		//Days to keep builds is 5 and Max # of builds to keep is 7
 	        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
 	    }
            //variable declaration 
@@ -13,7 +14,8 @@ pipeline {
 // In this checkout stage, integrating github repo with Jenkins
 stage ('git checkout') {
 	           steps { 
-	 	git credentialsId: 'github', url:'https://github.com/nadeemrafikhan/hello-world.git'
+	 	//git credentialsId: 'github', url:'https://github.com/nadeemrafikhan/hello-world.git'
+		git 'https://github.com/nadeemrafikhan/hello-world.git'
 		}
 
 	}
