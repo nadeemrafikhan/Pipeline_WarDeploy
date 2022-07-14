@@ -1,5 +1,5 @@
 //Diplay build version with your jon name display
-latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+
 currentBuild.displayName="${latestTag}~#"+currentBuild.number
 //currentBuild.displayName="war_deploy~#"+currentBuild.number
 pipeline {
@@ -12,6 +12,7 @@ pipeline {
 		 environment {
 				PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 				def WAR_PATH= "webapp/target/*.war"
+			 latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
 		} 
 	stages {
 	
