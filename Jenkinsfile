@@ -15,7 +15,7 @@ pipeline {
 stage ('git checkout') {
 	           steps { 
 	 	//git credentialsId: 'github', url:'https://github.com/nadeemrafikhan/hello-world.git'
-		git 'https://github.com/nadeemrafikhan/hello-world.git' branch:'master'
+		git 'https://github.com/nadeemrafikhan/hello-world.git'
 		}
 
 	}
