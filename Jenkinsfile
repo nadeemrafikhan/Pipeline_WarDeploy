@@ -80,8 +80,8 @@ sh """
 			post{
 	                success{
 	                    echo 'Now Archiving ....'
-			    echo 'latestTag ___________________________________________'
-				echo ${PATH}
+			   // echo 'latestTag ___________________________________________'
+				echo PATH
 			    archiveArtifacts artifacts : '**/*.war' 
 	                    sshagent(['root-ssh']) {
 	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.233.138.205:/home/ec2-user/artifact/'
