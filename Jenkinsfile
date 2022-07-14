@@ -12,7 +12,8 @@ pipeline {
 		 environment {
 				PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 				def WAR_PATH= "webapp/target/*.war"
-			 latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+			 //latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+			 latestTag = 'ddddddddddddddddd'
 		} 
 	stages {
 	
