@@ -69,12 +69,12 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
 		// using root and its prite key file to uplad .war file
 		sshagent(['root-ssh']) {
 	// Before war file path variable setup
- //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  root@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
+ //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  root@13.127.134.84:/opt/apache-tomcat-8.5.81/webapps/'
 //after war file path variable setup
 sh """
-	scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.233.138.205:/opt/apache-tomcat-8.5.81/webapps/
-	ssh root@13.233.138.205 /opt/apache-tomcat-8.5.81/bin/shutdown.sh
-	ssh root@13.233.138.205 /opt/apache-tomcat-8.5.81/bin/startup.sh
+	scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.127.134.84:/opt/apache-tomcat-8.5.81/webapps/
+	ssh root@13.127.134.84/opt/apache-tomcat-8.5.81/bin/shutdown.sh
+	ssh root@13.127.134.84 /opt/apache-tomcat-8.5.81/bin/startup.sh
 """	
 }
 	} 
