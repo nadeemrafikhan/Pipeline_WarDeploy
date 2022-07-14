@@ -4,10 +4,10 @@ pipeline {
 	        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
 	    }
            //variable declaration 
-		environment {
+		 environment {
 				PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 				def WAR_PATH= "webapp/target/*.war"
-		}
+		} 
 	stages {
 	
 // In this checkout stage, integrating github repo with Jenkins
@@ -34,7 +34,8 @@ stage ('git checkout') {
 stage ('deploy') {
 		steps {
 
-		/* using c2-user and its .pem file to uplad .war file
+		/* 
+		using c2-user and its .pem file to uplad .war file
 		sshagent(['tocat_ssh']) {
 	// Before war file path variable setup
  //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  ec2-user@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
@@ -47,7 +48,7 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
 	                success{
 	                    echo 'Now Archiving ....'
 			    archiveArtifacts artifacts : '**/*.war' 
-	                     sshagent(['tocat_ssh']) {
+	                    sshagent(['tocat_ssh']) {
 	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/home/ec2-user/artifact/'
 	                }
 			}
