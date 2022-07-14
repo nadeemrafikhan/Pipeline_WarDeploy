@@ -20,7 +20,7 @@ pipeline {
 }
 					stage ('deploy') {
 	steps {
-	sshagent(['root_ssh']) {
+	sshagent(['root-ssh']) {
 		sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
 }
 }
