@@ -18,5 +18,15 @@ pipeline {
 }
 }
 }
+								post{
+                success{
+                    echo 'Now Archiving ....'
+		    archiveArtifacts artifacts : '**/*.war' 
+                     sshagent(['tocatdev']) {
+                    sh 'scp **/*.war ec2-user@3.111.157.181:/home/ec2-user/artifact/'
+                }
+		}
+            }
+					
 				}
 }
