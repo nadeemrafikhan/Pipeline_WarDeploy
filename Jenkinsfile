@@ -14,7 +14,6 @@ pipeline {
 				def WAR_PATH= "webapp/target/*.war"
 			 latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
 		} 
-	 echo '$latestTag ___________________________________________'
 	stages {
 	
 /* In this checkout stage, integrating github repo with Jenkins but this stage will only use if your pipeline jos definition is pipeline script
@@ -81,6 +80,7 @@ sh """
 			post{
 	                success{
 	                    echo 'Now Archiving ....'
+			    echo '$latestTag ___________________________________________'
 			    archiveArtifacts artifacts : '**/*.war' 
 	                    sshagent(['root-ssh']) {
 	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.233.138.205:/home/ec2-user/artifact/'
