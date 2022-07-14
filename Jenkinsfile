@@ -60,7 +60,11 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.127.134.84:/opt/apac
                         echo 'Now Archiving ....'
                 archiveArtifacts artifacts : '**/*.war' 
                         sshagent(['tocat_ssh']) {
-                        sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.127.134.84:/home/ec2-user/artifact/'
+                        sh """
+                        scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.127.134.84:/home/ec2-user/artifact/'
+                        ssh root@13.127.134.84/opt/apache-tomcat-8.5.81/bin/shutdown.sh
+                        ssh root@13.127.134.84 /opt/apache-tomcat-8.5.81/bin/startup.sh
+                        """
                     }
             }
                 }
