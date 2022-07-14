@@ -13,8 +13,8 @@ pipeline {
 				PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 				def WAR_PATH= "webapp/target/*.war"
 			 latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
-			 echo '$latestTag ___________________________________________'
 		} 
+	 echo '$latestTag ___________________________________________'
 	stages {
 	
 /* In this checkout stage, integrating github repo with Jenkins but this stage will only use if your pipeline jos definition is pipeline script
