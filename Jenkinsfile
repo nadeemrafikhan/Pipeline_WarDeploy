@@ -81,7 +81,7 @@ sh """
 	                    echo 'Now Archiving ....'
 			    archiveArtifacts artifacts : '**/*.war' 
 	                    sshagent(['root-ssh']) {
-	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@65.0.103.93:/home/ec2-user/artifact/'
+	                    sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.233.138.205:/home/ec2-user/artifact/'
 	                }
 			}
 	            }
