@@ -1,5 +1,8 @@
 pipeline {
 			agent any 
+	options {
+        buildDiscarder logRotator(daysToKeepStr: '5', numToKeepStr: '7')
+    }
 	environment {
 			PATH= "/opt/apache-maven-3.8.6/bin/:$PATH"
 			def WAR_PATH= "webapp/target/*.war"
