@@ -1,5 +1,7 @@
 //Diplay build version with your jon name display
-currentBuild.displayName="war_deploy~#"+currentBuild.number
+latestTag = sh(returnStdout:  true, script: "git tag --sort=-creatordate | head -n 1").trim()
+currentBuild.displayName="${latestTag}~#"+currentBuild.number
+//currentBuild.displayName="war_deploy~#"+currentBuild.number
 pipeline {
 	agent any 
 	options {
