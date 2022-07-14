@@ -46,7 +46,7 @@ stage ('deploy') {
         steps {
 
         
-        using c2-user and its .pem file to uplad .war file
+        //using c2-user and its .pem file to uplad .war file
         sshagent(['tocat_ssh']) {
     // Before war file path variable setup
  //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  ec2-user@43.204.24.96:/opt/apache-tomcat-8.5.81/webapps/'
