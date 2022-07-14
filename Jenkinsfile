@@ -18,6 +18,10 @@ pipeline {
 }
 }
 }
+	post{
+                
+                    echo 'Now Archiving ....'
+            }			
 			
 				}
 }
