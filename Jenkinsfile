@@ -1,3 +1,5 @@
+//Diplay build version with your jon name display
+currentBuild.displayName="war_deploy~#"+currentBuild.number
 pipeline {
 	agent any 
 	options {
