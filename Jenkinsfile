@@ -45,7 +45,7 @@ stage ('git checkout') {
 stage ('deploy') {
         steps {
 
-        /* 
+        
         using c2-user and its .pem file to uplad .war file
         sshagent(['tocat_ssh']) {
     // Before war file path variable setup
@@ -64,8 +64,8 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@43.204.24.96:/opt/apach
                     }
             }
                 }
-*/
 
+/*
         // using root and its prite key file to uplad .war file
         sshagent(['root-ssh']) {
     // Before war file path variable setup
@@ -76,7 +76,7 @@ sh """
     ssh root@13.127.134.84/opt/apache-tomcat-8.5.81/bin/shutdown.sh
     ssh root@13.127.134.84 /opt/apache-tomcat-8.5.81/bin/startup.sh
 """ 
-}
+} */
     } 
             post{
                     success{
