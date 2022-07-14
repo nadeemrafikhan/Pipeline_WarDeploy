@@ -11,7 +11,9 @@ pipeline {
 		} 
 	stages {
 	
-// In this checkout stage, integrating github repo with Jenkins
+/* In this checkout stage, integrating github repo with Jenkins but this stage will only use if your pipeline jos definition is pipeline script
+this you will select when you create job and in pipeline section and there you have to paste these content there, 
+so In this example I am using different method that pipeline script from SCM
 stage ('git checkout') {
 	           steps { 
 	 	//git credentialsId: 'github', url:'https://github.com/nadeemrafikhan/hello-world.git'
@@ -19,6 +21,7 @@ stage ('git checkout') {
 		}
 
 	}
+	*/
 // In this build stage , cleaning the workspace before package the .war file on local Jenkins server.				   		
 
 	stage ('Build') {
