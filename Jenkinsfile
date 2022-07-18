@@ -73,12 +73,12 @@ sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} ec2-user@13.233.86.185:/opt/apac
         // using root and its prite key file to uplad .war file
         sshagent(['root-ssh']) {
     // Before war file path variable setup
- //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  root@13.127.134.84:/opt/apache-tomcat-8.5.81/webapps/'
+ //sh 'scp -o StrictHostkeyChecking=no   webapp/target/*.war  root@13.235.23.39:/opt/apache-tomcat-8.5.81/webapps/'
 //after war file path variable setup
 sh """
-    scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.127.134.84:/opt/apache-tomcat-8.5.81/webapps/
-    ssh root@13.127.134.84/opt/apache-tomcat-8.5.81/bin/shutdown.sh
-    ssh root@13.127.134.84 /opt/apache-tomcat-8.5.81/bin/startup.sh
+    scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.235.23.39:/opt/apache-tomcat-8.5.81/webapps/
+    ssh root@13.235.23.39 /opt/apache-tomcat-8.5.81/bin/shutdown.sh
+    ssh root@13.235.23.39 /opt/apache-tomcat-8.5.81/bin/startup.sh
 """ 
 } 
     } 
@@ -87,7 +87,7 @@ sh """
                         echo 'Now Archiving ....'
                 archiveArtifacts artifacts : '**\/*.war' 
                         sshagent(['root-ssh']) {
-                        sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.127.134.84:/home/ec2-user/artifact/'
+                        sh 'scp -o StrictHostkeyChecking=no ${WAR_PATH} root@13.235.23.39:/home/ec2-user/artifact/'
                     }
             }
                 }
